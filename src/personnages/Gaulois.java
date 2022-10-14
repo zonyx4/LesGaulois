@@ -13,6 +13,18 @@ public class Gaulois {
 	public String getNom() {
 		return nom;
 	}
+	
+	public int getForce() {
+		return force;
+	}
+	
+	public void setForce(int force) {
+		this.force = force;
+	}
+	
+	public int getEffetPotion() {
+		return effetPotion;
+	}
 
 	public void setEffetPotion(int effetPotion) {
 		this.effetPotion = effetPotion;
@@ -25,7 +37,11 @@ public class Gaulois {
 	private String prendreParole() {
 		return "Le gaulois" + nom +" :";
 	}
-
+	
+	public void frapper(Romain romain) {
+		System.out.println(nom + "envoire un grand coup dans la mâchoire de "+romain.getNom());
+		romain.recevoirCoup(force/3);
+	}
 	@Override
 	public String toString() {
 		return "Gaulois [nom=" + nom + ", force=" + force + ", effetPotion=" + effetPotion + "]";
@@ -33,5 +49,13 @@ public class Gaulois {
 	
 	public static void main(String[] args) {
 		//TODO créer un main permettant de tester la classe Gaulois
+		Gaulois asterix = new Gaulois ("Astérix", 8);
+		System.out.println(asterix.toString());
+		asterix.parler("Je suis le plus fort");
+		Romain eclatus = new Romain ("Eclatus", 7);
+		asterix.frapper(eclatus);
+		asterix.frapper(eclatus);
+		asterix.frapper(eclatus);
+		asterix.frapper(eclatus);
 	}
 }
