@@ -35,12 +35,17 @@ public class Gaulois {
 		}
 
 	private String prendreParole() {
-		return "Le gaulois" + nom +" :";
+		return "Le gaulois " + nom +" :";
+	}
+	
+	public void boirePotion(int potion) {
+		System.out.println(prendreParole() +"« Merci Druide, je sens que ma force est "+ Integer.toString(potion) +" fois décuplée. »");
+		setEffetPotion(effetPotion * potion);
 	}
 	
 	public void frapper(Romain romain) {
-		System.out.println(nom + "envoire un grand coup dans la mâchoire de "+romain.getNom());
-		romain.recevoirCoup(force/3);
+		System.out.println(nom + " envoie un grand coup dans la mâchoire de "+romain.getNom());
+		romain.recevoirCoup(force * effetPotion / 3);
 	}
 	@Override
 	public String toString() {
@@ -48,11 +53,11 @@ public class Gaulois {
 	}
 	
 	public static void main(String[] args) {
-		//TODO créer un main permettant de tester la classe Gaulois
 		Gaulois asterix = new Gaulois ("Astérix", 8);
 		System.out.println(asterix.toString());
 		asterix.parler("Je suis le plus fort");
 		Romain eclatus = new Romain ("Eclatus", 7);
+		asterix.boirePotion(3);
 		asterix.frapper(eclatus);
 		asterix.frapper(eclatus);
 		asterix.frapper(eclatus);
